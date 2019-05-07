@@ -24,12 +24,12 @@
     V put(K key, V value)
     V put(K key, V value, int ttlSeconds)
 ```
-1. get
+2. get
   - Hit 된 시간을 갱신하는 모듈을 활서화 할 경우, 능동적인 TTL 처리가 가능
 ```java
     V get(K key)
 ```
-1. addAndGet
+3. addAndGet
   - 기존 값을 하나 증가해서 저장한 후에 새로운 값을 반환
   - 기존 값이 numeric이 아닌 경우, InvalidTargetObjectTypeException 익셉션을 발생
 ```java
@@ -37,7 +37,7 @@
         ....
     }
 ```
-1. cleanup
+4. cleanup
   - 1초 주기로 TTL이 경과 된 값을 자동 삭제
 ```java
     void cleanUp()
@@ -84,4 +84,11 @@
       <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
     </encoder>
   </appender>
+  
+  <root level="DEBUG">
+    <appender-ref ref="ROLLING"/>
+    <appender-ref ref="STDOUT" />
+  </root>
+
+</configuration>
 ```
