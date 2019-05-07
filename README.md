@@ -19,9 +19,10 @@
 
 ## 주요 함수 설명
 * put
-    
+
+```java
     V put(K key, V value)
-    
+```
 
 ## 테스트 모듈 설명
 * Put / Get 테스트
@@ -34,3 +35,31 @@
 
 ## 로그 모듈 설명
 *
+
+```bash
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true"  scan="true" scanperiod="30 seconds">
+
+  <!--콘솔 로그 설정-->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>%d{HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
+    </layout>
+  </appender>
+
+  <!--파일 로그 설정-->
+  <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>log\\momory_cache.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 하루 단위 파일 생성 -->
+      <fileNamePattern>log\\momory_cache.%d{yyyy-MM-dd}.%i.out</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- 특정 크기 초과시 새로운 파일 생성 ex) 10KB, 100MB -->
+        <maxFileSize>10KB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
+    </encoder>
+  </appender>
+```
