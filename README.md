@@ -22,6 +22,7 @@
 
 ```java
     V put(K key, V value)
+    V put(K key, V value, int ttlSeconds)
 ```
 
 ## 테스트 모듈 설명
@@ -34,8 +35,11 @@
 
 
 ## 로그 모듈 설명
-*
+* {프로젝트경로}\log 폴더에 로그 파일이 생성된다.
+* 하루 단위로 로그를 생성한다.
+* 작성한 로그 파일의 크기가 100kb 이상이면 새로운 로그 파일 생성
 
+> logback.xml
 ```bash
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true"  scan="true" scanperiod="30 seconds">
@@ -55,7 +59,7 @@
       <fileNamePattern>log\\momory_cache.%d{yyyy-MM-dd}.%i.out</fileNamePattern>
       <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
         <!-- 특정 크기 초과시 새로운 파일 생성 ex) 10KB, 100MB -->
-        <maxFileSize>10KB</maxFileSize>
+        <maxFileSize>100KB</maxFileSize>
       </timeBasedFileNamingAndTriggeringPolicy>
     </rollingPolicy>
     <encoder>
