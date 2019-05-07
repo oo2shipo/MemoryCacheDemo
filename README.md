@@ -1,10 +1,12 @@
 # MemoryCacheDemo
 
+
 ## 개발 환경
 * JDK 1.8
 * IntelliJ
 * JUnit4
 * Logback 1.2.3
+
 
 ## 주요 기능
 * 캐시 사이즈 설정
