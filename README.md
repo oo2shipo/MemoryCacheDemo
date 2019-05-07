@@ -15,30 +15,30 @@
 * Logback 기반 로그 작성
 
 ## 주요 함수 설명
-1. put
-  - 기존 값이 있으면 old value를 반환
-  - 동기화가 지원되는 ConcurrentHashMap를 사용해서 key, value를 관리
-  - TTL 값을 초단위로 설정하며 기간 경과시에 스레드에서 자동 소멸
-  - victim 전략으로 채용된 LRU 구현을 ArrayList에서 Key 값을 관리해서 구현
+* put
+  1.기존 값이 있으면 old value를 반환
+  1.동기화가 지원되는 ConcurrentHashMap를 사용해서 key, value를 관리
+  1.TTL 값을 초단위로 설정하며 기간 경과시에 스레드에서 자동 소멸
+  1.victim 전략으로 채용된 LRU 구현을 ArrayList에서 Key 값을 관리해서 구현
 ```java
     V put(K key, V value)
     V put(K key, V value, int ttlSeconds)
 ```
-2. get
-  - Hit 된 시간을 갱신하는 모듈을 활서화 할 경우, 능동적인 TTL 처리가 가능
+* get
+  1.Hit 된 시간을 갱신하는 모듈을 활서화 할 경우, 능동적인 TTL 처리가 가능
 ```java
     V get(K key)
 ```
-3. addAndGet
-  - 기존 값을 하나 증가해서 저장한 후에 새로운 값을 반환
-  - 기존 값이 numeric이 아닌 경우, InvalidTargetObjectTypeException 익셉션을 발생
+* addAndGet
+  1.기존 값을 하나 증가해서 저장한 후에 새로운 값을 반환
+  1.기존 값이 numeric이 아닌 경우, InvalidTargetObjectTypeException 익셉션을 발생
 ```java
     public synchronized V addAndGet(K key) throws InvalidTargetObjectTypeException {
         ....
     }
 ```
-4. cleanup
-  - 1초 주기로 TTL이 경과 된 값을 자동 삭제
+* cleanup
+  1.1초 주기로 TTL이 경과 된 값을 자동 삭제
 ```java
     void cleanUp()
 ```
