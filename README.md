@@ -14,6 +14,15 @@
 * JUnit4 기반 테스트 코드 작성
 * Logback 기반 로그 작성
 
+## 프로젝트 실행
+* 실행 명령어를 실행하면 jar 파일 생성 및 JUnit 모듈이 실행
+* Jar 파일 : target 폴더에 MemoryCacheDemo-1.0-SNAPSHOT.jar 생성
+* JUnit 모듈 실행 : NumberFormatException 익셉션 발생 포함 (NumberFormatException -> InvalidTargetObjectTypeException)
+
+```bash
+mvn clean package
+```
+
 ## 주요 함수 설명
 * put
   * 기존 값이 있으면 old value를 반환
