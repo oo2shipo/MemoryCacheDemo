@@ -16,8 +16,8 @@
 
 ## 주요 함수 설명
 * put
-  1.기존 값이 있으면 old value를 반환
-  1.동기화가 지원되는 ConcurrentHashMap를 사용해서 key, value를 관리
+1.기존 값이 있으면 old value를 반환
+1.동기화가 지원되는 ConcurrentHashMap를 사용해서 key, value를 관리
   1.TTL 값을 초단위로 설정하며 기간 경과시에 스레드에서 자동 소멸
   1.victim 전략으로 채용된 LRU 구현을 ArrayList에서 Key 값을 관리해서 구현
 ```java
